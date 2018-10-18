@@ -1,5 +1,5 @@
-import beautifulsoup4
-import flask
+from bs4 import BeautifulSoup
+
 
 def scrape(request):
     """Main request."""

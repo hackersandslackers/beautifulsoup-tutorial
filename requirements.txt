@@ -1,6 +1,17 @@
 beautifulsoup4==4.6.3
+bs4==0.0.1
+cachetools==2.1.0
 certifi==2018.10.15
 chardet==3.0.4
+google-api-python-client==1.7.4
+google-auth==1.5.1
+google-auth-httplib2==0.0.3
+httplib2==0.11.3
 idna==2.7
+pyasn1==0.4.4
+pyasn1-modules==0.2.2
 requests==2.20.0
+rsa==4.0
+six==1.11.0
+uritemplate==3.0.0
 urllib3==1.24
