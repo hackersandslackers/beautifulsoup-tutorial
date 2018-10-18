@@ -15,7 +15,8 @@ def scrape(request):
 
         request_json = request.get_json()
         if request_json:
-            plantext = request_json['plain']
+            plaintext = request_json['plain']
             html = request_json['html']
-        else:
             return html
+        else:
+            return 'nothing happened'
