@@ -15,8 +15,14 @@ def scrape(request):
 
         request_json = request.get_json()
         if request_json:
+
+            url = request_json['url']
             plaintext = request_json['plain']
             html = request_json['html']
-            return html
+            soup = BeautifulSoup(url, 'html.parser')
+            arr = []
+            for link in soup['post-content'].find_all('a'):
+                arr.append(link.get('href'))
+            return arr
         else:
             return 'nothing happened'
