@@ -18,12 +18,10 @@ def scrape(request):
         ghost_url = request_json['url']
         r = requests.get(ghost_url)
         raw_html = r.text
+        print('raw_html = ', raw_html)
 		html = BeautifulSoup(raw_html, 'html.parser')
-        for a in html.select('a'):
+        return html
+        '''for a in html.select('a'):
 			url = link.get('href')
             links.append(url)
-            #r = requests.get(url)
-            #print(r.text)
-        return links
-        #else:
-            #return "no body sent wtf"
+        return links'''
