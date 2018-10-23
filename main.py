@@ -34,4 +34,4 @@ def scrape(request):
                 'url': url
             }
             previews.append(preview_dict)
-        return previews
+        return previews[0]
