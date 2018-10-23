@@ -8,7 +8,7 @@ def scrape(request):
         # Allows POST requests from any origin with the Content-Type
         # header and caches preflight response for an 3600s
         headers = {
- 			'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Origin': '*',
             'Access-Control-Allow-Methods': 'POST',
             'Access-Control-Allow-Headers': 'Content-Type',
             'Access-Control-Max-Age': '3600'
@@ -19,7 +19,7 @@ def scrape(request):
         r = requests.get(ghost_url)
         raw_html = r.text
         print('raw_html = ', raw_html)
-		html = BeautifulSoup(raw_html, 'html.parser')
+        html = BeautifulSoup(raw_html, 'html.parser')
         return html
         '''for a in html.select('a'):
 			url = link.get('href')
