@@ -1,12 +1,14 @@
 import requests
 from bs4 import BeautifulSoup
 
+previews = []
 
 def scrape(request):
     """Main request."""
     if request.method == 'POST':
         # Allows POST requests from any origin with the Content-Type
         # header and caches preflight response for an 3600s
+        global previews
         headers = {
             'Access-Control-Allow-Origin': '*',
             'Access-Control-Allow-Methods': 'POST',
@@ -21,7 +23,6 @@ def scrape(request):
         print('raw_html = ', raw_html)
         html = BeautifulSoup(raw_html, 'html.parser')
         links = html.find_all('.post-content a')
-        previews = []
         for link in links:
             url = link.get('href')
             r2 = requests.get(url)
@@ -34,4 +35,4 @@ def scrape(request):
                 'url': url
             }
             previews.append(preview_dict)
-        return (previews, 200, headers)
+        return ('hi', 200, headers)
