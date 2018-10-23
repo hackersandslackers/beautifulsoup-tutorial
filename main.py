@@ -20,8 +20,17 @@ def scrape(request):
         raw_html = r.text
         print('raw_html = ', raw_html)
         html = BeautifulSoup(raw_html, 'html.parser')
-        return html
-        '''for a in html.select('a'):
+        links = html.find_all('a')
+        previews = []
+        for link in links:
 			url = link.get('href')
-            links.append(url)
-        return links'''
+            link_html = requests.get(url)
+            link_preview = BeautifulSoup(link_html, 'html.parser')
+            preview_dict = {
+                'title': link_preview.title.string,
+                'description': link_preview.find("meta",  name="description"),
+                'image': link_preview.find("meta",  property="og:image")
+                'url': url
+            }
+            previews.append(preview_dict)
+        return previews
