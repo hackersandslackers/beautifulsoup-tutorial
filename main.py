@@ -19,7 +19,7 @@ def scrape(request):
         r = requests.get(ghost_url)
         raw_html = r.text
         html = BeautifulSoup(raw_html, 'html.parser')
-        body = html.select('.post-content')
+        body = html.select('.post-content')[0]
         links = body.find_all('a')
         previews = []
         for link in links:
