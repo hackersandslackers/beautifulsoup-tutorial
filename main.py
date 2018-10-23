@@ -37,4 +37,4 @@ def scrape(request):
             }
             logging.warn(preview_dict)
             previews.append(preview_dict)
-        return ('hi', 200, headers)
+        return (previews, 200, headers)
