@@ -1,5 +1,6 @@
 import requests
 from bs4 import BeautifulSoup
+import logging
 
 previews = []
 
@@ -34,5 +35,6 @@ def scrape(request):
                 'image': link_preview.find("meta",  property="og:image"),
                 'url': url
             }
+            logging.warn(preview_dict)
             previews.append(preview_dict)
         return ('hi', 200, headers)
