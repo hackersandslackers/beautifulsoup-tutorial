@@ -24,7 +24,8 @@ def scrape(request):
         previews = []
         for link in links:
             url = link.get('href')
-            link_html = requests.get(url)
+            r2 = requests.get(url)
+            link_html = r2.text
             link_preview = BeautifulSoup(link_html, 'html.parser')
             preview_dict = {
                 'title': link_preview.title.string,
