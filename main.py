@@ -20,7 +20,7 @@ def scrape(request):
         raw_html = r.text
         html = BeautifulSoup(raw_html, 'html.parser')
         body = html.select('.post-content')[0]
-        links = body.find_all('a')
+        links = body.select("p > a")
         previews = []
         for link in links:
             url = link.get('href')
