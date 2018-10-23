@@ -29,7 +29,7 @@ def scrape(request):
             preview_dict = {
                 'title': link_preview.title.string,
                 'description': link_preview.find("meta",  name="description"),
-                'image': link_preview.find("meta",  property="og:image")
+                'image': link_preview.find("meta",  property="og:image"),
                 'url': url
             }
             previews.append(preview_dict)
