@@ -29,13 +29,11 @@ def scrape(request):
             link_html = r2.text
             link_preview = BeautifulSoup(link_html, 'html.parser')
             try:
-                d = link_preview.find("meta",  property="og:description")
-                d.get('content')
+                d = link_preview.find("meta",  property="og:description").get('content')
             except TypeError:
                 d = 'shitty site with no description'
             try:
-                i = link_preview.find("meta",  property="og:image")
-                i = i.get('content'),
+                i = link_preview.find("meta",  property="og:image").get('content')
             except TypeError:
                 i = 'shitty site with no image'
             preview_dict = {
