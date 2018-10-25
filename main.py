@@ -28,10 +28,12 @@ def scrape(request):
             r2 = requests.get(url)
             link_html = r2.text
             link_preview = BeautifulSoup(link_html, 'html.parser')
+            d = link_preview.find("meta",  property="og:description")
+            i = link_preview.find("meta",  property="og:image")
             preview_dict = {
                 'title': link_preview.title.string,
-                'description': link_preview.find("meta",  property="og:description").get('content'),
-                'image': link_preview.find("meta",  property="og:image").get('content'),
+                'description': d.get('content'),
+                'image': i.get('content'),
                 'url': url
             }
             previews.append(preview_dict)
