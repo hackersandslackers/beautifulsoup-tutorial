@@ -1,5 +1,6 @@
 import requests
 from bs4 import BeautifulSoup
+from flask import make_response
 
 
 def scrape(request):
@@ -34,4 +35,4 @@ def scrape(request):
                 'url': url
             }
             previews.append(preview_dict)
-        return previews[0]
+        return make_response(previews, 200, headers)
