@@ -35,4 +35,4 @@ def scrape(request):
                 'url': url
             }
             previews.append(preview_dict)
-        return make_response(previews, 200, headers)
+        return make_response(str(previews), 200, headers)
