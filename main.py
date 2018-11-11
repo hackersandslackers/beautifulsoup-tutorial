@@ -18,11 +18,13 @@ def scrape(request):
         request_json = request.get_json()
         ghost_url = request_json['url']
         r = requests.get(ghost_url)
+
         raw_html = r.text
         html = BeautifulSoup(raw_html, 'html.parser')
         body = html.select('.post-content')[0]
         links = body.select("p > a")
         previews = []
+        print('previews =', previews)
         for link in links:
             url = link.get('href')
             r2 = requests.get(url)
