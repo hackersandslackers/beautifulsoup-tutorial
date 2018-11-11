@@ -1,10 +1,74 @@
 import requests
 from bs4 import BeautifulSoup
 from flask import make_response
+from google.cloud import storage
+from urllib.request import urlretrieve
+import time
+
+
+def getTitle(linked_preview):
+    """Attempt to get a title."""
+    title = ''
+    if linked_preview.title.string is not None:
+        title = linked_preview.title.string
+    elif linked_preview.find("h1") is not None:
+        title = linked_preview.find("h1")[0]
+    return title
+
+
+def getDescription(linked_preview):
+    """Attempt to get description."""
+    description = 'EMPTY'
+    if linked_preview.find("meta", property="og:description") is not None:
+        description = linked_preview.find("meta", property="og:description").get('content')
+    elif linked_preview.find("p") is not None:
+        description = linked_preview.find("p").content
+    return description
+
+
+def store_image(source_file_name):
+    """Upload preview image file to the bucket."""
+    if source_file_name is not None:
+        bucket_name = 'hackersandslackersassets'
+        storage_client = storage.Client()
+        bucket = storage_client.get_bucket(bucket_name)
+        destination_blob_name = source_file_name.rsplit('/')[-1]
+        local_file = 'img/' + destination_blob_name
+        urlretrieve(source_file_name, local_file)
+        # delay to avoid corrupted previews
+        time.sleep(1)
+        blob = bucket.blob('linkpreviews/' + destination_blob_name)
+
+        blob.upload_from_filename(local_file)
+
+        print('File {} uploaded to {}.'.format(
+            local_file,
+            'linkpreviews/' + destination_blob_name))
+
+
+def getImage(linked_preview):
+    """Attempt to get image."""
+    image = ''
+    if linked_preview.find("meta", property="og:image") is not None:
+        image = linked_preview.find("meta", property="og:image").get('content')
+        # store_image(image)
+    elif linked_preview.find("img") is not None:
+        image = linked_preview.find("img").get('href')
+    return image
+
+
+def getSiteName(linked_preview):
+    """Attempt to get the site's base name."""
+    sitename = ''
+    if linked_preview.find("meta", property="og:site_name") is not None:
+        sitename = linked_preview.find("meta", property="og:site_name").get('content')
+    else:
+        sitename = linked_preview.url
+    return sitename
 
 
 def scrape(request):
-    """Main request."""
+    """Scrape scheduled link previews."""
     if request.method == 'POST':
         # Allows POST requests from any origin with the Content-Type
         # header and caches preflight response for an 3600s
@@ -14,41 +78,29 @@ def scrape(request):
             'Access-Control-Allow-Headers': 'Content-Type',
             'Access-Control-Max-Age': '3600'
         }
-        links = []
         request_json = request.get_json()
         ghost_url = request_json['url']
+        headers.update({
+            'User-Agent': 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:52.0) Gecko/20100101 Firefox/52.0',
+        })
         r = requests.get(ghost_url)
-
-        raw_html = r.text
+        raw_html = r.content
         html = BeautifulSoup(raw_html, 'html.parser')
-        body = html.select('.post-content')[0]
-        links = body.select("p > a")
+        body = html.select('.post-content p > a')
         previews = []
         print('previews =', previews)
-        for link in links:
+        for link in body:
             url = link.get('href')
-            r2 = requests.get(url)
-            link_html = r2.text
-            link_preview = BeautifulSoup(link_html, 'html.parser')
-            d = link_preview.find("meta",  property="og:description")
-            i = link_preview.find("meta",  property="og:image")
-            try:
-                title = link_preview.title.string
-            except TypeError:
-                title = 'site has no title'
-            try:
-                d.get('content')
-            except TypeError:
-                d = 'shitty site with no description'
-            try:
-                i.get('content')
-            except TypeError:
-                i = 'shitty site with no image'
+            r2 = requests.get(url, headers=headers)
+            link_html = r2.content
+            linked_preview = BeautifulSoup(link_html, 'html.parser')
+            print('linked_preview', url)
             preview_dict = {
-                'title': title,
-                'description': d,
-                'image': i,
+                'title': getTitle(linked_preview),
+                'description': getDescription(linked_preview),
+                'image': getImage(linked_preview),
+                'sitename': getSiteName(linked_preview),
                 'url': url
-            }
+                }
             previews.append(preview_dict)
         return make_response(str(previews), 200, headers)

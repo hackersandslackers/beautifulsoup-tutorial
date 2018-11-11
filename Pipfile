@@ -7,6 +7,7 @@ name = "pypi"
 requests = "*"
 beautifulsoup4="*"
 flask="*"
+google-cloud-storage="*"
 
 [dev-packages]
 
