@@ -1,7 +1,6 @@
 import requests
 from bs4 import BeautifulSoup
 from flask import make_response
-from google.cloud import storage
 from urllib.request import urlretrieve
 import time
 
@@ -24,26 +23,6 @@ def getDescription(linked_preview):
     elif linked_preview.find("p") is not None:
         description = linked_preview.find("p").content
     return description
-
-
-def store_image(source_file_name):
-    """Upload preview image file to the bucket."""
-    if source_file_name is not None:
-        bucket_name = 'hackersandslackersassets'
-        storage_client = storage.Client()
-        bucket = storage_client.get_bucket(bucket_name)
-        destination_blob_name = source_file_name.rsplit('/')[-1]
-        local_file = 'img/' + destination_blob_name
-        urlretrieve(source_file_name, local_file)
-        # delay to avoid corrupted previews
-        time.sleep(1)
-        blob = bucket.blob('linkpreviews/' + destination_blob_name)
-
-        blob.upload_from_filename(local_file)
-
-        print('File {} uploaded to {}.'.format(
-            local_file,
-            'linkpreviews/' + destination_blob_name))
 
 
 def getImage(linked_preview):
