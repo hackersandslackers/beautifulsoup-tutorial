@@ -1,48 +1,48 @@
 import requests
 from bs4 import BeautifulSoup
 from flask import make_response
-from urllib.request import urlretrieve
-import time
 
 
-def getTitle(linked_preview):
+def get_title(link):
     """Attempt to get a title."""
     title = ''
-    if linked_preview.title.string is not None:
-        title = linked_preview.title.string
-    elif linked_preview.find("h1") is not None:
-        title = linked_preview.find("h1")[0]
+    if link.title.string is not None:
+        title = link.title.string
+    elif link.find("h1") is not None:
+        title = link.find("h1")
     return title
 
 
-def getDescription(linked_preview):
+def get_description(link):
     """Attempt to get description."""
     description = 'EMPTY'
-    if linked_preview.find("meta", property="og:description") is not None:
-        description = linked_preview.find("meta", property="og:description").get('content')
-    elif linked_preview.find("p") is not None:
-        description = linked_preview.find("p").content
+    if link.find("meta", property="og:description") is not None:
+        description = link.find("meta", property="og:description").get('content')
+    elif link.find("p") is not None:
+        description = link.find("p").content
     return description
 
 
-def getImage(linked_preview):
+def get_image(link):
     """Attempt to get image."""
     image = ''
-    if linked_preview.find("meta", property="og:image") is not None:
-        image = linked_preview.find("meta", property="og:image").get('content')
-        # store_image(image)
-    elif linked_preview.find("img") is not None:
-        image = linked_preview.find("img").get('href')
+    if link.find("meta", property="og:image") is not None:
+        image = link.find("meta", property="og:image").get('content')
+    elif link.find("img") is not None:
+        image = link.find("img").get('href')
     return image
 
 
-def getSiteName(linked_preview):
+def get_site_name(link, url):
     """Attempt to get the site's base name."""
     sitename = ''
-    if linked_preview.find("meta", property="og:site_name") is not None:
-        sitename = linked_preview.find("meta", property="og:site_name").get('content')
+    if link.find("meta", property="og:site_name") is not None:
+        sitename = link.find("meta", property="og:site_name").get('content')
     else:
-        sitename = linked_preview.url
+        sitename = url.split('//')[1]
+        name = sitename.split('/')[0]
+        name = sitename.rsplit('.')[1]
+        return name.capitalize()
     return sitename
 
 
@@ -58,28 +58,25 @@ def scrape(request):
             'Access-Control-Max-Age': '3600'
         }
         request_json = request.get_json()
-        ghost_url = request_json['url']
+        html = request_json['html']
         headers.update({
             'User-Agent': 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:52.0) Gecko/20100101 Firefox/52.0',
         })
-        r = requests.get(ghost_url)
-        raw_html = r.content
-        html = BeautifulSoup(raw_html, 'html.parser')
-        body = html.select('.post-content p > a')
+        soup = BeautifulSoup(html, 'html.parser')
+        links = soup.select('.post-content p > a')
         previews = []
-        print('previews =', previews)
-        for link in body:
+        for link in links:
             url = link.get('href')
             r2 = requests.get(url, headers=headers)
             link_html = r2.content
-            linked_preview = BeautifulSoup(link_html, 'html.parser')
-            print('linked_preview', url)
+            embedded_link = BeautifulSoup(link_html, 'html.parser')
             preview_dict = {
-                'title': getTitle(linked_preview),
-                'description': getDescription(linked_preview),
-                'image': getImage(linked_preview),
-                'sitename': getSiteName(linked_preview),
+                'title': get_title(embedded_link),
+                'description': get_description(embedded_link),
+                'image': get_image(embedded_link),
+                'sitename': get_site_name(embedded_link, url),
                 'url': url
                 }
             previews.append(preview_dict)
         return make_response(str(previews), 200, headers)
+    return make_response('bruh pls', 400, headers)

@@ -6,26 +6,6 @@ from urllib.request import urlretrieve
 import time
 
 
-def getTitle(linked_preview):
-    """Attempt to get a title."""
-    title = ''
-    if linked_preview.title.string is not None:
-        title = linked_preview.title.string
-    elif linked_preview.find("h1") is not None:
-        title = linked_preview.find("h1")[0]
-    return title
-
-
-def getDescription(linked_preview):
-    """Attempt to get description."""
-    description = 'EMPTY'
-    if linked_preview.find("meta", property="og:description") is not None:
-        description = linked_preview.find("meta", property="og:description").get('content')
-    elif linked_preview.find("p") is not None:
-        description = linked_preview.find("p").content
-    return description
-
-
 def store_image(source_file_name):
     """Upload preview image file to the bucket."""
     if source_file_name is not None:
@@ -46,56 +26,77 @@ def store_image(source_file_name):
             'linkpreviews/' + destination_blob_name))
 
 
-def getImage(linked_preview):
-    """Attempt to get image."""
+def getTitle(link):
+    """Attempt to get a title."""
+    title = ''
+    if link.title.string is not None:
+        title = link.title.string
+    elif link.find("h1") is not None:
+        title = link.find("h1")
+    return title
+
+
+def getDescription(link):
+    """Attempt to get description."""
+    description = 'EMPTY'
+    if link.find("meta", property="og:description") is not None:
+        description = link.find("meta", property="og:description").get('content')
+    elif link.find("p") is not None:
+        description = link.find("p").content
+    return description
+
+
+def getImage(link):
+    """Attempt to get a preview image."""
     image = ''
-    if linked_preview.find("meta", property="og:image") is not None:
-        image = linked_preview.find("meta", property="og:image").get('content')
-        # store_image(image)
-    elif linked_preview.find("img") is not None:
-        image = linked_preview.find("img").get('href')
+    if link.find("meta", property="og:image") is not None:
+        image = link.find("meta", property="og:image").get('content')
+    elif link.find("img") is not None:
+        image = link.find("img").get('href')
     return image
 
 
-def getSiteName(linked_preview):
+def getSiteName(link, url):
     """Attempt to get the site's base name."""
     sitename = ''
-    if linked_preview.find("meta", property="og:site_name") is not None:
-        sitename = linked_preview.find("meta", property="og:site_name").get('content')
+    if link.find("meta", property="og:site_name") is not None:
+        sitename = link.find("meta", property="og:site_name").get('content')
     else:
-        sitename = linked_preview.url
+        sitename = url.split('//')[1]
+        name = sitename.split('/')[0]
+        name = sitename.rsplit('.')[1]
+        return name.capitalize()
     return sitename
 
 
-def scrape():
+def scrape(targeturl):
     """Scrape scheduled link previews."""
-    ghost_url = 'https://hackersandslackers.com/p/1955ec85-484c-488a-a584-5ecf68e8c09f/'
     headers = requests.utils.default_headers()
     headers.update({
         'User-Agent': 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:52.0) Gecko/20100101 Firefox/52.0',
     })
-    r = requests.get(ghost_url)
+    r = requests.get(targeturl)
     raw_html = r.content
-    html = BeautifulSoup(raw_html, 'html.parser')
-    body = html.select('.post-content p > a')
+    soup = BeautifulSoup(raw_html, 'html.parser')
+    links = soup.select('.post-content p > a')
     previews = []
     print('previews =', previews)
-    for link in body:
+    for link in links:
         url = link.get('href')
         r2 = requests.get(url, headers=headers)
         link_html = r2.content
-        linked_preview = BeautifulSoup(link_html, 'html.parser')
-        print('linked_preview', url)
+        embedded_link = BeautifulSoup(link_html, 'html.parser')
+        print('embedded_link', url)
         preview_dict = {
-            'title': getTitle(linked_preview),
-            'description': getDescription(linked_preview),
-            'image': getImage(linked_preview),
-            'sitename': getSiteName(linked_preview),
+            'title': getTitle(embedded_link),
+            'description': getDescription(embedded_link),
+            'image': getImage(embedded_link),
+            'sitename': getSiteName(embedded_link, url),
             'url': url
             }
         previews.append(preview_dict)
         print(preview_dict)
-        # return make_response(str(previews), 200, headers)
+    return make_response(str(previews), 200, headers)
 
 
 scrape()
