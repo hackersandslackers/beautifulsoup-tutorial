@@ -1,6 +1,6 @@
 import requests
 from bs4 import BeautifulSoup
-from flask import make_response
+from flask import make_response, request
 from extract import getLinks
 from meta import getMeta
 
