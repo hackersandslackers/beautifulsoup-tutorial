@@ -33,7 +33,7 @@ def get_image(link):
         srl = SRL(link)
         bg_images = srl.findall('url(')
         print('bg_images = ', bg_images)
-    return image
+        return bg_images[0]
 
 
 def get_site_name(link, url):
