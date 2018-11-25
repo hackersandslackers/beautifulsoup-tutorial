@@ -1,8 +1,7 @@
-import requests
-from bs4 import BeautifulSoup
 from flask import make_response, request
 from extract import getLinks
 from meta import getMeta
+import json
 
 
 def scrape(request):
@@ -19,4 +18,5 @@ def scrape(request):
     }
     links = getLinks(target_url, headers)
     previews = getMeta(links, headers)
-    return make_response(str(previews), 200, headers)
+    response_body = json.dumps(previews)
+    return make_response(str(response_body), 200, headers)
