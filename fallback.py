@@ -1,3 +1,7 @@
+import re
+from srl import SRL
+
+
 def get_title(link):
     """Attempt to get a title."""
     title = ''
@@ -25,6 +29,10 @@ def get_image(link):
         image = link.find("meta", property="og:image").get('content')
     elif link.find("img") is not None:
         image = link.find("img").get('href')
+    else:
+        srl = SRL(link)
+        bg_images = srl.findall('url(')
+        print('bg_images = ', bg_images)
     return image
 
 
