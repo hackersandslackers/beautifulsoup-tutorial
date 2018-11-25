@@ -19,4 +19,4 @@ def scrape(request):
     }
     links = getLinks(target_url, headers)
     previews = getMeta(links, headers)
-    return make_response(previews, 200, headers)
+    return make_response(str(previews), 200, headers)
