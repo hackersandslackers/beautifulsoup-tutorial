@@ -1,7 +1,3 @@
-import re
-from srl import SRL
-
-
 def get_title(link):
     """Attempt to get a title."""
     title = ''
