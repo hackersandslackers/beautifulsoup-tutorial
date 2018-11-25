@@ -5,8 +5,8 @@ def get_title(link):
         title = link.title.string
     elif link.find("h1") is not None:
         title = link.find("h1")
-    elif link.findall("h1") is not None:
-        title = link.findall("h1")[0]
+    elif link.find_all("h1") is not None:
+        title = link.find_all("h1")[0]
     return title
 
 
@@ -17,8 +17,8 @@ def get_description(link):
         description = link.find("meta", property="og:description").get('content')
     elif link.find("p") is not None:
         description = link.find("p").content
-    elif link.findall("p") is not None:
-        description = link.findall("p")[0]
+    elif link.find_all("p") is not None:
+        description = link.find_all("p")[0]
     return description
 
 
@@ -27,8 +27,8 @@ def get_image(link):
     image = ''
     if link.find("meta", property="og:image") is not None:
         image = link.find("meta", property="og:image").get('content')
-    elif link.findall("img") is not None:
-        image = link.findall("img")[0].get('href')
+    elif link.find_all("img") is not None:
+        image = link.find_all("img")[0].get('href')
     return image
 
 
