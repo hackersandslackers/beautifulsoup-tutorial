@@ -8,7 +8,6 @@ def scrape(request):
     """Scrape scheduled link previews."""
     # Allows POST requests from any origin with the Content-Type
     # header and caches preflight response for an 3600s
-    exception_domains = ['Youtube', 'Medium' 'Github']
     target_url = request.args.get('url')
     headers = {
         'Access-Control-Allow-Origin': '*',
