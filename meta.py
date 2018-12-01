@@ -3,7 +3,7 @@ from bs4 import BeautifulSoup
 from fallback import get_title, get_description, get_image, get_site_name
 
 
-def getMeta(links, headers):
+def get_meta(links, headers):
     """Generate preview obj per link."""
     previews = []
     exception_domains = ['Youtube', 'Medium' 'Github']
