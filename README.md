@@ -11,6 +11,8 @@
 [![GitHub stars](https://img.shields.io/github/stars/toddbirchard/Link-Preview-API.svg?style=flat-square)](https://github.com/toddbirchard/ghosttheme-stockholm/stargazers?colorB=e3bb18)
 [![GitHub forks](https://img.shields.io/github/forks/toddbirchard/Link-Preview-API.svg?style=flat-square)](https://github.com/toddbirchard/ghosttheme-stockholm/network)
 
+API which scans content for plaintext links, and replaces them with rich embed modules.
+
 ![Link Preview](https://raw.githubusercontent.com/toddbirchard/Link-Preview-API/master/img/linkpreview.png)
 
 ## Usage
