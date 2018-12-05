@@ -52,3 +52,5 @@ Public access currently not available, but considered.
 There are several major features which remain in development:
 
 1. **Returning embed HTML**: Instead of simply returning JSON containing metadata per request,users will be able to opt in to instead receiving a text response of HTML for an embedded widget.
+2. **Specialized responses for popular sources**: Some content providers (such as Medium) are intentionally resistant to scrapers. Exceptions for such sources will be handled on a case-by-case basis to ensure meaningful data is returned.
+3. **Contextual responses**: Similar to a list of "exceptions," a list of chosen sources will return data custom-suited to the nature of the target URL.
