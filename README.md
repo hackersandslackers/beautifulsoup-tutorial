@@ -1,7 +1,6 @@
 # Link Preview API
 
 ![python](https://img.shields.io/badge/Python-3.7-blue.svg?logo=python&longCache=true&logoColor=white&colorB=23a8e2)
-![Pip](https://flat.badgen.net/pypi/v/pip?colorB=23a8e2)
 ![flask](https://img.shields.io/badge/flask-1.0.2-blue.svg?longCache=true&logo=python&style=flat-square&logoColor=white&colorB=23a8e2)
 ![beauitfulsoup](https://img.shields.io/badge/beautifulsoup4-4.6.3-blue.svg?longCache=true&logo=python&longCache=true&style=flat-square&logoColor=white&colorB=23a8e2)
 ![Google Cloud Functions](https://img.shields.io/badge/Google--Cloud--Functions-v93-blue.svg?longCache=true&logo=google&longCache=true&style=flat-square&logoColor=white&colorB=23a8e2)
@@ -50,4 +49,6 @@ Public access currently not available, but considered.
 
 ## Functionality in Development
 
-Returned in every response is a _sitename_. This site nme is compared against a list of the internet's top sources of content, thereby allowing us to serve bespoke embed styles for recognized sitenames nd ensure proper data extraction.
+There are several major features which remain in development:
+
+1. **Returning embed HTML**: Instead of simply returning JSON containing metadata per request,users will be able to opt in to instead receiving a text response of HTML for an embedded widget.
