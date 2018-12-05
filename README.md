@@ -1,13 +1,13 @@
 # Link Preview API
 
-![python](https://img.shields.io/badge/Python-3.7-blue.svg?logo=python&longCache=true&logoColor=white&colorB=23a8e2&style=flat-square)
-![flask](https://img.shields.io/badge/flask-1.0.2-blue.svg?longCache=true&logo=python&style=flat-square&logoColor=white&colorB=23a8e2)
-![beauitfulsoup](https://img.shields.io/badge/beautifulsoup4-4.6.3-blue.svg?longCache=true&logo=python&longCache=true&style=flat-square&logoColor=white&colorB=23a8e2)
-![Google Cloud Functions](https://img.shields.io/badge/Google--Cloud--Functions-v93-blue.svg?longCache=true&logo=google&longCache=true&style=flat-square&logoColor=white&colorB=23a8e2)
-![GitHub last commit](https://img.shields.io/github/last-commit/google/skia.svg?style=flat-square)
-[![GitHub issues](https://img.shields.io/github/issues/toddbirchard/Link-Preview-API.svg?style=flat-square)](https://github.com/toddbirchard/ghosttheme-stockholm/issues)
-[![GitHub stars](https://img.shields.io/github/stars/toddbirchard/Link-Preview-API.svg?style=flat-square&colorB=e3bb18)](https://github.com/toddbirchard/Link-Preview-API/stargazers)
-[![GitHub forks](https://img.shields.io/github/forks/toddbirchard/Link-Preview-API.svg?style=flat-square)](https://github.com/toddbirchard/Link-Preview-API/network)
+![python](https://img.shields.io/badge/Python-3.7-blue.svg?logo=python&longCache=true&logoColor=white&colorB=23a8e2&style=flat-square&colorA=36363e)
+![flask](https://img.shields.io/badge/flask-1.0.2-blue.svg?longCache=true&logo=python&style=flat-square&logoColor=white&colorB=23a8e2&colorA=36363e)
+![beauitfulsoup](https://img.shields.io/badge/beautifulsoup4-4.6.3-blue.svg?longCache=true&logo=python&longCache=true&style=flat-square&logoColor=white&colorB=23a8e2&colorA=36363e)
+![Google Cloud Functions](https://img.shields.io/badge/Google--Cloud--Functions-v93-blue.svg?longCache=true&logo=google&longCache=true&style=flat-square&logoColor=white&colorB=23a8e2&colorA=36363e)
+![GitHub last commit](https://img.shields.io/github/last-commit/google/skia.svg?style=flat-square&colorA=36363e)
+[![GitHub issues](https://img.shields.io/github/issues/toddbirchard/Link-Preview-API.svg?style=flat-square&colorA=36363e)](https://github.com/toddbirchard/ghosttheme-stockholm/issues)
+[![GitHub stars](https://img.shields.io/github/stars/toddbirchard/Link-Preview-API.svg?style=flat-square&colorB=e3bb18&colorA=36363e)](https://github.com/toddbirchard/Link-Preview-API/stargazers)
+[![GitHub forks](https://img.shields.io/github/forks/toddbirchard/Link-Preview-API.svg?style=flat-square&colorA=36363e)](https://github.com/toddbirchard/Link-Preview-API/network)
 
 API which scans content for plaintext links, and replaces them with rich embed modules.
 
