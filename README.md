@@ -1,6 +1,6 @@
 # Link Preview API
 
-![python](https://img.shields.io/badge/Python-3.7-blue.svg?logo=python&longCache=true&logoColor=white&colorB=23a8e2)
+![python](https://img.shields.io/badge/Python-3.7-blue.svg?logo=python&longCache=true&logoColor=white&colorB=23a8e2&style=flat-square)
 ![flask](https://img.shields.io/badge/flask-1.0.2-blue.svg?longCache=true&logo=python&style=flat-square&logoColor=white&colorB=23a8e2)
 ![beauitfulsoup](https://img.shields.io/badge/beautifulsoup4-4.6.3-blue.svg?longCache=true&logo=python&longCache=true&style=flat-square&logoColor=white&colorB=23a8e2)
 ![Google Cloud Functions](https://img.shields.io/badge/Google--Cloud--Functions-v93-blue.svg?longCache=true&logo=google&longCache=true&style=flat-square&logoColor=white&colorB=23a8e2)
@@ -54,3 +54,4 @@ There are several major features which remain in development:
 1. **Returning embed HTML**: Instead of simply returning JSON containing metadata per request,users will be able to opt in to instead receiving a text response of HTML for an embedded widget.
 2. **Specialized responses for popular sources**: Some content providers (such as Medium) are intentionally resistant to scrapers. Exceptions for such sources will be handled on a case-by-case basis to ensure meaningful data is returned.
 3. **Contextual responses**: Similar to a list of "exceptions," a list of chosen sources will return data custom-suited to the nature of the target URL.
+4. **Whitelisted Sources**: Ensure only specified domains have access to your API key.
