@@ -1,4 +1,4 @@
-# Link Preview API
+# Linkbox
 
 ![python](https://img.shields.io/badge/Python-3.7-blue.svg?logo=python&longCache=true&logoColor=white&colorB=23a8e2&style=flat-square&colorA=36363e)
 ![flask](https://img.shields.io/badge/flask-1.0.2-blue.svg?longCache=true&logo=python&style=flat-square&logoColor=white&colorB=23a8e2&colorA=36363e)
@@ -9,7 +9,7 @@
 [![GitHub stars](https://img.shields.io/github/stars/toddbirchard/Link-Preview-API.svg?style=flat-square&colorB=e3bb18&colorA=36363e)](https://github.com/toddbirchard/Link-Preview-API/stargazers)
 [![GitHub forks](https://img.shields.io/github/forks/toddbirchard/Link-Preview-API.svg?style=flat-square&colorA=36363e)](https://github.com/toddbirchard/Link-Preview-API/network)
 
-API which scans content for plaintext links, and replaces them with rich embed modules.
+Single endpoit which scans page content for all `<a>` tags, and replaces them with embedded link previews of the target URLs.
 
 ![Link Preview](https://raw.githubusercontent.com/toddbirchard/Link-Preview-API/master/img/linkpreview.png)
 
