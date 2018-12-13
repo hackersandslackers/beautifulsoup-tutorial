@@ -5,7 +5,7 @@
 ![beauitfulsoup](https://img.shields.io/badge/beautifulsoup4-4.6.3-blue.svg?longCache=true&logo=python&longCache=true&style=flat-square&logoColor=white&colorB=23a8e2&colorA=36363e)
 ![Google Cloud Functions](https://img.shields.io/badge/Google--Cloud--Functions-v93-blue.svg?longCache=true&logo=google&longCache=true&style=flat-square&logoColor=white&colorB=23a8e2&colorA=36363e)
 ![GitHub last commit](https://img.shields.io/github/last-commit/google/skia.svg?style=flat-square&colorA=36363e)
-[![GitHub issues](https://img.shields.io/github/issues/toddbirchard/Link-Preview-API.svg?style=flat-square&colorA=36363e)](https://github.com/toddbirchard/ghosttheme-stockholm/issues)
+[![GitHub issues](https://img.shields.io/github/issues/toddbirchard/Link-Preview-API.svg?style=flat-square&colorA=36363e)](https://github.com/toddbirchard/Link-Preview-API/issues)
 [![GitHub stars](https://img.shields.io/github/stars/toddbirchard/Link-Preview-API.svg?style=flat-square&colorB=e3bb18&colorA=36363e)](https://github.com/toddbirchard/Link-Preview-API/stargazers)
 [![GitHub forks](https://img.shields.io/github/forks/toddbirchard/Link-Preview-API.svg?style=flat-square&colorA=36363e)](https://github.com/toddbirchard/Link-Preview-API/network)
 
