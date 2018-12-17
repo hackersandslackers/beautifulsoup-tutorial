@@ -4,7 +4,7 @@ with open("README", 'r') as f:
     long_description = f.read()
 
 setup = (
-    name='Lynx',
+    name='Linkbox',
     version='1.0',
     description='Generates a JSON object containing link preview information by passing a URL parameter.',
     long_description=long_description,
@@ -14,4 +14,8 @@ setup = (
     packages=['endpoint', 'tests'],
     tests_require=["pytest"],
     cmdclass={"pytest": PyTest},
+    install_requires=[
+        "bs4",
+        "flask"
+    ]
 )
