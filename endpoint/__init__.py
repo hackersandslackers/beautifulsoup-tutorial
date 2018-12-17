@@ -1,1 +1,0 @@
-all = ['fallback', 'main', 'meta']
