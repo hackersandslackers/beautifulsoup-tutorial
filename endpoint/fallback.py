@@ -12,7 +12,7 @@ def get_title(link):
 
 def get_description(link):
     """Attempt to get description."""
-    description = 'EMPTY'
+    description = None
     if link.find("meta", property="og:description") is not None:
         description = link.find("meta", property="og:description").get('content')
     elif link.find("p") is not None:
@@ -27,8 +27,8 @@ def get_image(link):
     image = None
     if link.find("meta", property="og:image") is not None:
         image = link.find("meta", property="og:image").get('content')
-    elif link.find_all("img") is not None:
-        image = link.find_all("img")[0].get('href')
+    elif link.find_all("img", src=True) is not None:
+        image = link.find_all("img")[0].get('src')
     return image
 
 
