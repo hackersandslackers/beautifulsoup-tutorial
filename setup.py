@@ -4,7 +4,7 @@ with open("README", 'r') as f:
     long_description = f.read()
 
 setup = (
-    name='Lynx',
+    name='linkbox',
     version='1.0',
     description='Generates a JSON object containing link preview information by passing a URL parameter.',
     long_description=long_description,

@@ -14,12 +14,16 @@ def get_meta(links, headers):
         domain = get_site_name(embedded_link, url)
         if domain in exception_domains:
             print('WARNING:', domain)
-        preview_dict = {
-            'title': get_title(embedded_link),
-            'description': get_description(embedded_link),
-            'image': get_image(embedded_link),
-            'sitename': get_site_name(embedded_link, url),
-            'url': url
-            }
+        preview_dict = {}
+        if get_title(embedded_link):
+            preview_dict['title'] = get_title(embedded_link)
+        if get_description(embedded_link):
+            preview_dict['description'] = get_description(embedded_link)
+        if get_image(embedded_link):
+            preview_dict['image'] = get_image(embedded_link)
+        if get_site_name(embedded_link):
+            preview_dict['sitename'] = get_site_name(embedded_link)
+        preview_dict['url'] = url
+
         previews.append(preview_dict)
     return previews

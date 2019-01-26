@@ -1,6 +1,6 @@
 def get_title(link):
     """Attempt to get a title."""
-    title = ''
+    title = None
     if link.title.string is not None:
         title = link.title.string
     elif link.find("h1") is not None:
@@ -24,7 +24,7 @@ def get_description(link):
 
 def get_image(link):
     """Attempt to get image."""
-    image = ''
+    image = None
     if link.find("meta", property="og:image") is not None:
         image = link.find("meta", property="og:image").get('content')
     elif link.find_all("img") is not None:
@@ -34,7 +34,7 @@ def get_image(link):
 
 def get_site_name(link, url):
     """Attempt to get the site's base name."""
-    sitename = ''
+    sitename = None
     if link.find("meta", property="og:site_name") is not None:
         sitename = link.find("meta", property="og:site_name").get('content')
     else:
