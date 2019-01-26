@@ -14,7 +14,7 @@ def get_description(link):
     """Attempt to get description."""
     description = None
     if link.find("meta", property="og:description") is not None:
-        description = link.find("meta", property="og:description").get_text()
+        description = link.find("meta", property="og:description").get('content')
     elif link.find("p") is not None:
         description = link.find("p").contents
     elif link.find_all("p") is not None:
@@ -26,7 +26,7 @@ def get_image(link):
     """Attempt to get image."""
     image = None
     if link.find("meta", property="og:image") is not None:
-        image = link.find("meta", property="og:image").get_text()
+        image = link.find("meta", property="og:image").get('content')
     elif link.find_all("img", src=True) is not None:
         image = link.find_all("img")[0].get('src')
     return image
@@ -36,7 +36,7 @@ def get_site_name(link, url):
     """Attempt to get the site's base name."""
     sitename = None
     if link.find("meta", property="og:site_name") is not None:
-        sitename = link.find("meta", property="og:site_name").get_text()
+        sitename = link.find("meta", property="og:site_name").get('content')
     else:
         sitename = url.split('//')[1]
         name = sitename.split('/')[0]
