@@ -4,8 +4,6 @@ import requests
 
 
 @pytest.mark.parametrize("request_string", 'https://hackersandslackers.com/p/2ee7075c-c495-4d91-adde-fd90b1442189/')
-
-
 def test_inspect_html(request_string):
     """Inspect html of incoming page."""
     headers = {

@@ -1,2 +1,3 @@
 credentials.json
 local.py
+.pytest_cache
