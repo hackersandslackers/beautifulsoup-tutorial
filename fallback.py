@@ -11,6 +11,13 @@ def get_site_name(link, url):
     return sitename
 
 
+def get_domain(url):
+    """Get site root domain name."""
+    domain = url.split('//')[1]
+    name = domain.split('/')[0]
+    return name
+
+
 def get_title(link):
     """Attempt to get a title."""
     title = None
@@ -43,5 +50,5 @@ def get_image(link, url):
     elif link.find_all("img", src=True) is not None:
         image = link.find_all("img")[0].get('src')
     if str(image)[0] == '/':
-        image = str(get_site_name(link, url)) + image
+        image = str(get_domain(url)) + image
     return image
