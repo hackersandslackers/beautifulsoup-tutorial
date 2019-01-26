@@ -1,3 +1,16 @@
+def get_site_name(link, url):
+    """Attempt to get the site's base name."""
+    sitename = None
+    if link.find("meta", property="og:site_name") is not None:
+        sitename = link.find("meta", property="og:site_name").get('content')
+    else:
+        sitename = url.split('//')[1]
+        name = sitename.split('/')[0]
+        name = sitename.rsplit('.')[1]
+        return name.capitalize()
+    return sitename
+
+
 def get_title(link):
     """Attempt to get a title."""
     title = None
@@ -22,24 +35,13 @@ def get_description(link):
     return description
 
 
-def get_image(link):
+def get_image(link, url):
     """Attempt to get image."""
     image = None
     if link.find("meta", property="og:image") is not None:
         image = link.find("meta", property="og:image").get('content')
     elif link.find_all("img", src=True) is not None:
         image = link.find_all("img")[0].get('src')
+    if str(image)[0] == '/':
+        image = str(get_site_name(link, url)) + image
     return image
-
-
-def get_site_name(link, url):
-    """Attempt to get the site's base name."""
-    sitename = None
-    if link.find("meta", property="og:site_name") is not None:
-        sitename = link.find("meta", property="og:site_name").get('content')
-    else:
-        sitename = url.split('//')[1]
-        name = sitename.split('/')[0]
-        name = sitename.rsplit('.')[1]
-        return name.capitalize()
-    return sitename

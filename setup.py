@@ -10,12 +10,13 @@ setup = (
     long_description=long_description,
     author='Todd Birchard',
     author_email='toddbirchard@gmail.com',
-    url="https://github.com/toddbirchard/Link-Preview-API",
-    packages=['endpoint', 'tests'],
+    url="https://github.com/toddbirchard/linkbox",
+    packages=['/', 'tests'],
     tests_require=["pytest"],
     cmdclass={"pytest": PyTest},
     install_requires=[
         "bs4",
-        "flask"
+        "flask",
+        "requests"
     ]
 )
