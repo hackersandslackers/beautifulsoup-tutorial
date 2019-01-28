@@ -48,7 +48,9 @@ def get_image(link, url):
     if link.find("meta", property="og:image") is not None:
         image = link.find("meta", property="og:image").get('content')
     elif link.find_all("img", src=True) is not None:
-        image = link.find_all("img")[0].get('src')
+        image = link.find_all("img")
+        if image:
+            image = link.find_all("img")[0].get('src')
     if str(image)[0] == '/':
         image = str(get_domain(url)) + image
     return image

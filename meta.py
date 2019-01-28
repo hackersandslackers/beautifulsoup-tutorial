@@ -1,6 +1,6 @@
 import requests
 from bs4 import BeautifulSoup
-from fallback import get_title, get_description, get_image, get_site_name
+from fetch import get_title, get_description, get_image, get_site_name
 
 
 def get_meta(link, headers):
