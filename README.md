@@ -13,7 +13,7 @@
 
 Public access coming soon!
 
-![Link Preview](https://raw.githubusercontent.com/toddbirchard/linkbox/master/img/linkpreview.png)
+![Link Preview](https://raw.githubusercontent.com/toddbirchard/linkbox/master/img/linkbox-terminal.png)
 
 ## Usage
 
