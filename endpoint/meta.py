@@ -9,8 +9,8 @@ def get_meta(links, headers):
     exception_domains = ['Youtube', 'Medium' 'Github']
     for link in links:
         url = link.get('href')
-        r = requests.get(url, headers=headers)
-        embedded_link = BeautifulSoup(r.content, 'html.parser')
+        req = requests.get(url, headers=headers)
+        embedded_link = BeautifulSoup(req.content, 'html.parser')
         domain = get_site_name(embedded_link, url)
         if domain in exception_domains:
             print('WARNING:', domain)

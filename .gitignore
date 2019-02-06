@@ -1,2 +1,6 @@
 credentials.json
 local.py
+.pytest_cache
+endpoint
+ghpages
+docs
