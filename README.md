@@ -20,17 +20,42 @@ Public access coming soon!
 Request:
 
 ```
-curl https://linkbox.link?url=https://venturebeat.com/2018/10/16/github-launches-actions-to-execute-code-in-containers-and-security-alerts-for-java-and-net-projects/
+curl https://linkbox.link?url=https://www.theatlantic.com/magazine/archive/2018/05/barbara-ehrenreich-natural-causes/556859/
 ```
 
 Response:
 ```
 {
-  "title": "GitHub launches Actions to execute code in containers and security alerts for Java and .NET projects | VentureBeat",
-  "description": "GitHub introduced Actions for automated workflows and code execution in containers on GitHub, alongside other changes to the developer platform.",
-  "image": "https://venturebeat.com/wp-content/uploads/2018/10/UPDATED-Actions-blog-screenshot-1.png?w=600",
-  "sitename": "VentureBeat",
-  "url": "https://venturebeat.com/2018/10/16/github-launches-actions-to-execute-code-in-containers-and-security-alerts-for-java-and-net-projects/"
+  "author": "Victoria Sweet",
+  "feeds": ["https://www.theatlantic.com/feed/all/",
+    "https://www.theatlantic.com/feed/best-of/"
+  ],
+  "image": "https://cdn.theatlantic.com/assets/media/img/2018/04/_BarbaraEhrenreich_FINAL_RVB/facebook.png?1523295067",
+  "postOrigin": "https://hackersandslackers.com/lynx-roundup-april-22nd",
+  "publishDate": "2018-04-10T08:00:00+00:00",
+  "summary": "I went to medical school, at least in part, to get to know death and perhaps to make my peace with it. One day—usually when you’re young, though sometimes later—the thought hits you: You really are going to die. Meanwhile, I watched as what had been called “medical care”—that is, treating the sick—turned into “health care,” keeping people healthy, at an ever-rising cost.",
+  "tags": ["control",
+    "cancer cells",
+    "delays death",
+    "ever-rising cost",
+    "spiritual epiphanies",
+    "strong family history",
+    "firsthand experience",
+    "fast-growing literature",
+    "regular physical exams",
+    "Natural Causes",
+    "finally unevadable death",
+    "new science",
+    "immune system—and",
+    "immediate health-care costs",
+    "chronicling cultural shifts",
+    "congenial new home",
+    "popular delusions",
+    "white blood cell"
+  ],
+  "title": "Your Body Is a Teeming Battleground",
+  "url": "https://www.theatlantic.com/magazine/archive/2018/05/barbara-ehrenreich-natural-causes/556859/",
+  "videos": []
 }
 ```
 
