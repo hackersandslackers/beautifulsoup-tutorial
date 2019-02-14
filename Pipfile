@@ -8,7 +8,6 @@ requests = "*"
 beautifulsoup4="*"
 flask="*"
 
-
 [dev-packages]
 pytest="*"
 
