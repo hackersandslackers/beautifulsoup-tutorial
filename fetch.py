@@ -27,6 +27,8 @@ def get_title(link):
         title = link.find("h1").string
     elif link.find_all("h1") is not None:
         title = link.find_all("h1")[0].string
+    if title:
+        title = title.split('|')[0]
     return title
 
 
