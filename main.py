@@ -1,5 +1,5 @@
 from flask import make_response, request
-from fetch import get_meta
+from meta import get_meta
 import json
 
 

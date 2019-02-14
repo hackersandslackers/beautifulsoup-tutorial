@@ -1,6 +1,3 @@
-from b4 import BeautifulSoup
-
-
 def get_site_name(link, url):
     """Attempt to get the site's base name."""
     sitename = None
@@ -67,16 +64,3 @@ def site_exceptions(link, url):
     exception_domains = ['Youtube', 'Medium' 'Github']
     if domain in exception_domains:
         print('WARNING:', domain)
-
-
-def get_meta(url):
-    """Generate preview obj per link."""
-    embedded_url = BeautifulSoup(url, 'html.parser')
-    preview_dict = {
-        'title': get_title(embedded_url),
-        'description': get_description(embedded_url),
-        'image': get_image(embedded_url),
-        'sitename': get_site_name(embedded_url, url),
-        'url': url
-        }
-    return preview_dict
