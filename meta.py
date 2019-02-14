@@ -10,7 +10,7 @@ def get_meta(link, headers):
     preview_dict = {
         'title': get_title(embedded_link),
         'description': get_description(embedded_link),
-        'image': get_image(embedded_link, link),
+        'image': get_image(embedded_link),
         'sitename': get_site_name(embedded_link, link),
         'url': link
         }
