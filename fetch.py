@@ -1,5 +1,10 @@
 def get_site_name(link, url):
-    """Attempt to get the site's base name."""
+    """Attempt to get the site's base name.
+
+    1. Check OG tags for site name.
+    2. If no OG tag exists, get top-level domain from url.
+    3. Return site name.
+    """
     sitename = None
     if link.find("meta", property="og:site_name") is not None:
         sitename = link.find("meta", property="og:site_name").get('content')
@@ -19,7 +24,13 @@ def get_domain(url):
 
 
 def get_title(link):
-    """Attempt to get a title."""
+    """Attempt to get a title.
+
+    1. Check metadata for title tag.
+    2. If doesn't exist, check page for h1 tag.
+    3. Remove all text which comes after the first pipe ("|") in the title.
+    4. Return title.
+    """
     title = None
     if link.title.string is not None:
         title = link.title.string
@@ -33,7 +44,12 @@ def get_title(link):
 
 
 def get_description(link):
-    """Attempt to get description."""
+    """Attempt to get description.
+
+    1. Check OG tags for description tag.
+    2. If doesn't exist, check page for p tag.
+    3, Return description.
+    """
     description = None
     if link.find("meta", property="og:description") is not None:
         description = link.find("meta", property="og:description").get('content')
@@ -45,7 +61,13 @@ def get_description(link):
 
 
 def get_image(link):
-    """Attempt to get image."""
+    """Attempt to get image.
+
+    1. Check OG tags for image tag.
+    2. If doesn't exist, check page for img tag.
+    3. If the image path is relative, make it absolute.
+    4. Return image URL.
+    """
     image = None
     if link.find("meta", property="og:image") is not None:
         image = link.find("meta", property="og:image").get('content')

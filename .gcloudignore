@@ -13,5 +13,6 @@
 .git
 .gitignore
 
-node_modules
+.env
+aylien.py
 local.py

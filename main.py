@@ -4,9 +4,13 @@ import json
 
 
 def scrape(request):
-    """Scrape scheduled link previews."""
-    # Allows POST requests from any origin with the Content-Type
-    # header and caches preflight response for an 3600s
+    """Scrape scheduled link previews.
+
+    1. Set headers of fetch request.
+    2. Call get_meta constructor.
+    3. Convert metadata to JSON object.
+    4. Return response.
+    """
     target_url = request.args.get('url')
     headers = {
         'Access-Control-Allow-Origin': '*',
