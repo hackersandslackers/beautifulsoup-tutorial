@@ -1,3 +1,6 @@
+from b4 import BeautifulSoup
+
+
 def get_site_name(link, url):
     """Attempt to get the site's base name."""
     sitename = None
@@ -44,7 +47,7 @@ def get_description(link):
     return description
 
 
-def get_image(link, url):
+def get_image(link):
     """Attempt to get image."""
     image = None
     if link.find("meta", property="og:image") is not None:
@@ -54,5 +57,26 @@ def get_image(link, url):
         if image:
             image = link.find_all("img")[0].get('src')
     if str(image)[0] == '/':
-        image = str(get_domain(url)) + image
+        image = str(get_domain(link)) + image
     return image
+
+
+def site_exceptions(link, url):
+    """Check to see if site is in list of exceptions."""
+    domain = get_site_name(link, url)
+    exception_domains = ['Youtube', 'Medium' 'Github']
+    if domain in exception_domains:
+        print('WARNING:', domain)
+
+
+def get_meta(url):
+    """Generate preview obj per link."""
+    embedded_url = BeautifulSoup(url, 'html.parser')
+    preview_dict = {
+        'title': get_title(embedded_url),
+        'description': get_description(embedded_url),
+        'image': get_image(embedded_url),
+        'sitename': get_site_name(embedded_url, url),
+        'url': url
+        }
+    return preview_dict
