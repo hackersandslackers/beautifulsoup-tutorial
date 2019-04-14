@@ -1,5 +1,5 @@
 from flask import make_response, request
-from meta import get_meta
+from fetch import get_meta
 import json
 
 
@@ -14,4 +14,4 @@ def scrape(request):
     target_url = request.args.get('url')
     previews = get_meta(target_url)
     response_body = json.dumps(previews)
-    return make_response(str(response_body), 200, headers)
+    return make_response(str(response_body), 200)
