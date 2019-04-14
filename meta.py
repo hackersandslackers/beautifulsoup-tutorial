@@ -3,7 +3,7 @@ from bs4 import BeautifulSoup
 from fetch import get_title, get_description, get_image, get_site_name
 
 
-def get_meta(link, headers):
+def get_meta(link):
     """Generate preview obj per link.
 
     1. Determine title of target url.
@@ -13,6 +13,13 @@ def get_meta(link, headers):
     5. Create dict of fetched metadata.
     6. Return result.
     """
+    headers = {
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Methods': 'GET',
+        'Access-Control-Allow-Headers': 'Content-Type',
+        'Access-Control-Max-Age': '3600',
+        'User-Agent': 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:52.0) Gecko/20100101 Firefox/52.0'
+    }
     r = requests.get(link, headers=headers)
     embedded_link = BeautifulSoup(r.content, 'html.parser')
     preview_dict = {
