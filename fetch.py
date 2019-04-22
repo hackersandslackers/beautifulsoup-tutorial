@@ -77,8 +77,8 @@ def get_image(link):
         image = link.find_all("img")
         if image:
             image = link.find_all("img")[0].get('src')
-    if str(image)[0] == '/':
-        image = str(get_domain(link)) + image
+    '''if str(image)[0] == '/':
+        image = str(get_domain(link)) + image'''
     return image
 
 
