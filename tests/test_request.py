@@ -1,9 +1,10 @@
+import os
 from bs4 import BeautifulSoup
 import pytest
 import requests
 
 
-@pytest.mark.parametrize("request_string", 'https://hackersandslackers.com/p/2ee7075c-c495-4d91-adde-fd90b1442189/')
+@pytest.mark.parametrize("request_string", 'https://hackersandslackers.com/plotting-data-with-seaborn-and-pandas/')
 def test_inspect_html(request_string):
     """Inspect html of incoming page."""
     headers = {
