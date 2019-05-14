@@ -1,9 +1,15 @@
-from flask import make_response, request
+from flask import Flask, make_response, request
+from flask_cors import CORS
 from fetch import get_meta
 import json
 
 
-def scrape(request):
+app = Flask(__name__)
+CORS(app)
+
+
+@app.route("/")
+def scrape():
     """Scrape scheduled link previews.
 
     1. Set headers of fetch request.
