@@ -36,9 +36,6 @@ def scrape():
             'Access-Control-Allow-Headers': 'Content-Type',
             'User-Agent': 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:52.0) Gecko/20100101 Firefox/52.0'
         }
-    headers = {
-        'Access-Control-Allow-Origin': '*',
-    }
     target_url = request.args.get('url')
     previews = get_meta(target_url)
     response_body = json.dumps(previews)

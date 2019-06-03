@@ -77,9 +77,17 @@ def get_image(link):
         image = link.find_all("img")
         if image:
             image = link.find_all("img")[0].get('src')
-    '''if str(image)[0] == '/':
-        image = str(get_domain(link)) + image'''
     return image
+
+
+def get_favicon(link):
+    """Attempt to get favicon."""
+    favicon = None
+    if link.find("link", attrs={"rel": "icon"}):
+        favicon = link.find("link", attrs={"rel": "icon"}).get('href')
+    elif link.find("link", attrs={"rel": "shortcut icon"}):
+        favicon = link.find("link", attrs={"rel": "shortcut icon"}).get('href')
+    return favicon
 
 
 def site_exceptions(link, url):
@@ -113,6 +121,7 @@ def get_meta(link):
         'title': get_title(embedded_link),
         'description': get_description(embedded_link),
         'image': get_image(embedded_link),
+        'favicon': get_favicon(embedded_link),
         'sitename': get_site_name(embedded_link, link),
         'url': link
         }
