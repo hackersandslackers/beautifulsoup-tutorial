@@ -4,10 +4,9 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-requests = "*"
-beautifulsoup4 = "*"
-flask = "*"
-flask_cors = "*"
+Requests = "*"
+Beautifulsoup4 = "*"
+Flask = "*"
 
 [dev-packages]
 pytest = "*"

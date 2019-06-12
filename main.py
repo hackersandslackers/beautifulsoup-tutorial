@@ -1,14 +1,7 @@
-from flask import Flask, make_response, request
-from flask_cors import CORS
+from flask import Flask, make_response, request, jsonify
 from fetch import get_meta
-import json
 
 
-app = Flask(__name__)
-CORS(app)
-
-
-@app.route("/")
 def scrape():
     """Scrape scheduled link previews.
 
@@ -38,5 +31,7 @@ def scrape():
         }
     target_url = request.args.get('url')
     previews = get_meta(target_url)
-    response_body = json.dumps(previews)
-    return (str(response_body), 200, headers)
+    response = jsonify(previews)
+    response.headers.set('Access-Control-Allow-Origin', '*')
+    response.headers.set('Access-Control-Allow-Methods', 'GET, POST')
+    return str(response)
