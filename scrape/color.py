@@ -1,6 +1,3 @@
-from bs4 import BeautifulSoup
-
-
 def get_theme_color(link):
     """Get brand color."""
     if link.find("meta", property="theme-color"):

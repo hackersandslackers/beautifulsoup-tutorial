@@ -1,6 +1,3 @@
-from bs4 import BeautifulSoup
-
-
 def get_description(link):
     """Attempt to get description.
 
