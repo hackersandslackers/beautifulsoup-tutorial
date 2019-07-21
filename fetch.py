@@ -115,6 +115,8 @@ def get_meta(link):
         'Access-Control-Max-Age': '3600',
         'User-Agent': 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:52.0) Gecko/20100101 Firefox/52.0'
     }
+    if 'http' not in link:
+        link = 'http://' + link
     r = requests.get(link, headers=headers)
     embedded_link = BeautifulSoup(r.content, 'html.parser')
     preview_dict = {
