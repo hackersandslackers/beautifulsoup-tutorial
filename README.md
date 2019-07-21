@@ -15,6 +15,8 @@
 
 ## Usage
 
+Linkbox accepts a `url` parameter where the value is expected to be a URL from which to generate a site preview. Here's a quick look at linkbox in action:
+
 ![Link Preview](https://raw.githubusercontent.com/toddbirchard/linkbox-api/master/img/linkboxdemo.gif)
 
 ## Features in Development
