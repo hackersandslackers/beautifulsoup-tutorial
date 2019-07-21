@@ -7,7 +7,7 @@
 ![GitHub Last Commit](https://img.shields.io/github/last-commit/google/skia.svg?style=flat-square&colorA=4c566a&colorB=a3be8c)
 [![GitHub Issues](https://img.shields.io/github/issues/toddbirchard/linkbox-api.svg?style=flat-square&colorA=4c566a&colorB=ebcb8b&logo=Github)](https://github.com/toddbirchard/linkbox-api/issues)
 [![GitHub Stars](https://img.shields.io/github/stars/toddbirchard/linkbox-api.svg?style=flat-square&colorB=ebcb8b&colorA=4c566a&logo=Github)](https://github.com/toddbirchard/linkbox-api/stargazers)
-[![GitHub Forks](https://img.shields.io/github/forks/toddbirchard/linkbox-api.svg?style=flat-square&colorA=4c566a&colorB=88c0d0&logo=Github)](https://github.com/toddbirchard/linkbox-api/network)
+[![GitHub Forks](https://img.shields.io/github/forks/toddbirchard/linkbox-api.svg?style=flat-square&colorA=4c566a&colorB=ebcb8b&logo=Github)](https://github.com/toddbirchard/linkbox-api/network)
 
 **Linkbox** is a single endpoint which accepts a `?url=` parameter and returns best-guess metadata for the target site. A successfully executed request will parse the HTML of the target page and derive a link preview. The resulting JSON can be used to format embedded HTML previews, thereby creating a better visual experience as well as countless SEO benefits.
 
