@@ -1,4 +1,4 @@
-"""Scrape page metadata attributes."""
+"""Scrape metadata attributes from a requested URL."""
 
 
 def get_title(html):
@@ -6,6 +6,10 @@ def get_title(html):
     title = None
     if html.title.string:
         title = html.title.string
+    elif html.find("meta", property="og:title"):
+        description = html.find("meta", property="og:title").get('content')
+    elif html.find("meta", property="twitter:title"):
+        description = html.find("meta", property="twitter:title").get('content')
     elif html.find("h1"):
         title = html.find("h1").string
     elif html.find_all("h1"):
