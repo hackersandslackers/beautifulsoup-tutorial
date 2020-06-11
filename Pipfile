@@ -6,10 +6,9 @@ name = "pypi"
 [packages]
 Requests = "*"
 Beautifulsoup4 = "*"
-Flask = "*"
 
 [dev-packages]
 pytest = "*"
 
 [requires]
-python_version = "3.7"
+python_version = "3.8"

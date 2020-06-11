@@ -1,1 +1,0 @@
-all = ['color', 'description', 'domain', 'favicon', 'fetch', 'image', 'name', 'title']
