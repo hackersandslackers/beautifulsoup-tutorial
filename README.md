@@ -8,7 +8,7 @@
 [![GitHub Stars](https://img.shields.io/github/stars/hackersandslackers/beautifulsoup-tutorial.svg?style=flat-square&colorB=ebcb8b&colorA=4c566a&logo=Github)](https://github.com/hackersandslackers/beautifulsoup-tutorial/stargazers)
 [![GitHub Forks](https://img.shields.io/github/forks/hackersandslackers/beautifulsoup-tutorial.svg?style=flat-square&colorA=4c566a&colorB=ebcb8b&logo=Github)](https://github.com/hackersandslackers/beautifulsoup-tutorial/network)
 
-![Beautifulsoup Tutorial](https://storage.googleapis.com/hackersandslackers-cdn/2018/11/beauitfulsoup2@2x.jpg)
+![Beautifulsoup Tutorial](https://hackersandslackers-cdn.storage.googleapis.com/2020/06/beautifulsoup-1-1@2x.jpg)
 
 A beginner's tutorial to scraping websites using Python's [BeautifulSoup](https://www.crummy.com/software/BeautifulSoup/bs4/doc/) library. This repository is the source code for the tutorial found here: 
 https://hackersandslackers.com/scraping-urls-with-beautifulsoup/
