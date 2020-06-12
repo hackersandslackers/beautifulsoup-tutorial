@@ -40,6 +40,6 @@ $ python3 main.py
 
 This script will output metadata scraped from whichever URL is specified in **config.py**. Simply change the value of this variable to test the script against any URL of your choice.
 
-——
+------------------
 
 **Hackers and Slackers** tutorials are free of charge. If you found this tutorial helpful, a [small donation](https://www.buymeacoffee.com/hackersslackers) would be greatly appreciated to keep us in business. All proceeds go towards coffee, and all coffee goes towards more content.
