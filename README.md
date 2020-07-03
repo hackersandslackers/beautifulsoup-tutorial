@@ -36,6 +36,16 @@ $ pipenv update
 $ python3 main.py
 ```
 
+**Installation via [Poetry](https://python-poetry.org/)**:
+
+```shell
+$ git clone https://github.com/hackersandslackers/beautifulsoup-tutorial.git
+$ cd beautifulsoup-tutorial
+$ poetry shell
+$ poetry update
+$ poetry run
+```
+
 ## How to Use
 
 This script will output metadata scraped from whichever URL is specified in **config.py**. Simply change the value of this variable to test the script against any URL of your choice.
