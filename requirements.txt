@@ -14,4 +14,4 @@ requests==2.24.0
 six==1.15.0
 soupsieve==2.0.1
 urllib3==1.25.9
-wcwidth==0.2.4
+wcwidth==0.2.5
