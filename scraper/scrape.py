@@ -4,18 +4,14 @@
 def get_title(html):
     """Scrape page title."""
     title = None
-    if html.title.string:
-        title = html.title.string
-    elif html.find("meta", property="og:title"):
-        description = html.find("meta", property="og:title").get('content')
+    if html.find("meta", property="og:title"):
+        title = html.find("meta", property="og:title").get('content')
     elif html.find("meta", property="twitter:title"):
-        description = html.find("meta", property="twitter:title").get('content')
+        title = html.find("meta", property="twitter:title").get('content')
+    elif html.find("title"):
+        title = html.find("title").string
     elif html.find("h1"):
         title = html.find("h1").string
-    elif html.find_all("h1"):
-        title = html.find_all("h1")[0].string
-    if title:
-        title = title.split('|')[0]
     return title
 
 
@@ -52,13 +48,16 @@ def get_image(html):
 def get_site_name(html, url):
     """Scrape site name."""
     if html.find("meta", property="og:site_name"):
-        sitename = html.find("meta", property="og:site_name").get('content')
-    elif html.find("meta", property='twitter:title'):
-        sitename = html.find("meta", property="twitter:title").get('content')
+        site_name = html.find("meta", property="og:site_name").get('content')
+    elif html.find("meta", property='twitter:site'):
+        site_name = html.find("meta", property="twitter:site").get('content')
     else:
-        sitename = url.split('//')[1]
-        return sitename.split('/')[0].rsplit('.')[1].capitalize()
-    return sitename
+        site_name = url.split('//')[1]
+        if site_name.split('/')[0].rsplit('.')[0] == 'www':
+            return site_name.split('/')[0].rsplit('.')[1]
+        else:
+            return site_name.split('/')[0].rsplit('.')[0]
+    return site_name
 
 
 def get_favicon(html, url):
