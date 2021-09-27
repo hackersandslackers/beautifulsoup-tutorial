@@ -9,7 +9,7 @@ packaging==20.4
 pluggy==0.13.1
 py==1.10.0
 pyparsing==2.4.7
-pytest==6.1.2
+pytest==6.2.5
 requests==2.26.0
 six==1.15.0
 soupsieve==2.0.1
