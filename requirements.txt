@@ -1,7 +1,7 @@
 attrs==20.3.0
 beautifulsoup4==4.9.3
 certifi==2021.5.30
-chardet==3.0.4
+chardet==5.1.0
 idna==2.10
 loguru==0.5.3
 more-itertools==8.5.0
