@@ -1,4 +1,4 @@
-attrs==20.3.0
+attrs==22.2.0
 beautifulsoup4==4.9.3
 certifi==2021.5.30
 chardet==3.0.4
