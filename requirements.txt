@@ -5,7 +5,7 @@ chardet==3.0.4
 idna==2.10
 loguru==0.5.3
 more-itertools==8.5.0
-packaging==20.4
+packaging==20.9
 pluggy==0.13.1
 py==1.10.0
 pyparsing==2.4.7
