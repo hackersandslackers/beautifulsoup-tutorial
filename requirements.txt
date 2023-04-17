@@ -1,5 +1,5 @@
 attrs==20.3.0
-beautifulsoup4==4.9.3
+beautifulsoup4==4.12.2
 certifi==2021.5.30
 chardet==3.0.4
 idna==2.10
