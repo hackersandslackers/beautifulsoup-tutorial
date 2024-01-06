@@ -106,8 +106,10 @@ venv.bak/
 credentials.json
 gcloud.json
 
-# Etc.
-.idea
-.pytest_cache
+# OS
 .DS_Store
+
+# IDEs
+.idea
+.vs_code
 

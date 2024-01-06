@@ -2,34 +2,45 @@
 name = "BeautifulSoup Web Scraping Tutorial"
 version = "0.1.0"
 description = "Scrape webpage metadata using BeautifulSoup."
-authors = ["Todd Birchard <toddbirchard@gmail.com>"]
-maintainers = ["Todd Birchard <toddbirchard@gmail.com>"]
+authors = ["Todd Birchard <todd@hackersandslackers.com>"]
+maintainers = ["Todd Birchard <todd@hackersandslackers.com>"]
 license = "MIT"
 readme = "README.md"
 homepage = "https://github.com/hackersandslackers/beautifulsoup-tutorial/"
 repository = "https://github.com/hackersandslackers/beautifulsoup-tutorial/"
 documentation = "https://hackersandslackers.com/scraping-urls-with-beautifulsoup/"
-keywords = ["Python",
-            "Beautifulsoup",
-            "Scrape",
-            "Scraper",
-            "Scraping"]
-
-[tool.poetry.dependencies]
-python = "^3.8"
-requests = "*"
-beautifulsoup4 = "*"
-
-[tool.poetry.dev-dependencies]
-pytest = "*"
-mock = "*"
-
-[build-system]
-requires = ["poetry>=0.12"]
-build-backend = "poetry.masonry.api"
+keywords = ["Python", "Beautifulsoup", "Scrape", "Scraping"]
 
 [tool.poetry.scripts]
-run = "main:scrape"
+run = "main:init_script"
+
+[tool.poetry.dependencies]
+python = ">=3.10,<4.0"
+requests = "*"
+beautifulsoup4 = "*"
+python-dotenv = "*"
+
+[tool.poetry.group.dev.dependencies]
+black = "*"
+isort = "*"
+flake8 = "*"
+pylint = "*"
+mypy = "*"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.pylint.'MESSAGES CONTROL']
+disable = "C0103,C0301,W0703,W0621"
+
+[tool.black]
+line-length = 120
+
+[tool.isort]
+profile = "black"
+multi_line_output = 3
+src_paths = ["flask_blueprint_tutorial", "config", "wsgi"]
 
 [tool.poetry.urls]
 issues = "https://github.com/hackersandslackers/beautifulsoup-tutorial/issues"
